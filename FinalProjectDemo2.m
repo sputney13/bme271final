@@ -34,6 +34,7 @@ chromscale = [fsharp, g, gsharp, a, asharp, b, c, csharp, d, dsharp, e, f];
 
 % Creates 12 note "sheet music"
 figure(14); clf
+title("'Sheet Music' for Background Music")
 for l = 1:12
     figure(14)
     plot(linspace(0,6,100), l*ones(100), 'k-')
@@ -58,7 +59,7 @@ for n = 1:12
     % if, the correlation is higher than a threshold, plot
     for iter = 1:length(eighthnotes)
         time = find(tcorrelate == eighthnotes(iter));
-        if correlate(time) > .3*max(correlate)
+        if correlate(time) > .4*max(correlate)
             figure(14)
             plot(eighthnotes(iter), n, 'r*')
             hold on

@@ -3,6 +3,7 @@
 % Reads in audiofile, combines audio data into a single vector
 [audiob, FSm] = audioread('MHALL.mp3');
 MHALL = sum(audiob,2)/size(audiob,2);
+soundsc(MHALL, FSm)
 [audios, FSs] = audioread('Chromatic Scale.mp3');
 cscale = sum(audios,2)/size(audios,2);
 %% Clip audiofile background, clip scale into notes
@@ -23,7 +24,8 @@ title('Plot of Audio in Mary Had a Little Lamb')
 chromscale = [c,d,e];
 
 % creates musical "staff" for 3 notes
-figure(5); clf 
+figure(5); clf
+title('Sheet Music for Mary Had a Little Lamb')
 for l = 1:3
     figure(5)
     plot(linspace(0,25,200), l*ones(200), 'k-')
@@ -51,10 +53,10 @@ for n = 1:3
         end
     end
 end
-
 %% Plot MHALL on same staff for comparison
 figure(5)
 hold on
-quartert = linspace(0, max(tcorrelate), 32);
+quartert = linspace(.5, max(tcorrelate), 32);
 notes = [3,2,1,2,3,3,3,3,2,2,2,2,3,3,3,3,3,2,1,2,3,3,3,1,2,2,3,2,1,1,1,1];
 plot(quartert, notes, 'b-')
+print -dpdf MHALLCorrelation
