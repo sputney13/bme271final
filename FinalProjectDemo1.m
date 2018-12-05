@@ -22,7 +22,8 @@ title("Audio Data for Chorus of Don't Let Me Down")
 hold on
 % plots background clip
 subplot(3,1,2)
-plot(tbackground,background,'k-') 
+plot(tbackground,background,'k-')
+axis([0 36 -2 2])
 xlabel('Time (s)')
 ylabel('Audio Data')
 title("Audio Data for Background Music of Don't Let Me Down")
