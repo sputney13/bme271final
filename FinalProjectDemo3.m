@@ -25,7 +25,6 @@ chromscale = [c,d,e];
 
 % creates musical "staff" for 3 notes
 figure(5); clf
-title('Sheet Music for Mary Had a Little Lamb')
 for l = 1:3
     figure(5)
     plot(linspace(0,25,200), l*ones(200), 'k-')
@@ -55,8 +54,9 @@ for n = 1:3
 end
 %% Plot MHALL on same staff for comparison
 figure(5)
+title('Sheet Music for Mary Had a Little Lamb (Correlation)')
 hold on
-quartert = linspace(.5, max(tcorrelate), 32);
+quartert = linspace(.25, max(tcorrelate), 32);
 notes = [3,2,1,2,3,3,3,3,2,2,2,2,3,3,3,3,3,2,1,2,3,3,3,1,2,2,3,2,1,1,1,1];
 plot(quartert, notes, 'b-')
 print -dpdf MHALLCorrelation

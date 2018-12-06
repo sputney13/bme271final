@@ -36,7 +36,6 @@ title('Spectrogram of Mary Had a Little Lamb');
 %% Determine notes, plot onto staff
 % creates musical "staff" for 3 notes
 figure(3); clf
-title('Sheet Music for Mary Had a Little Lamb')
 for l = 1:3
     figure(3)
     plot(linspace(0,25,200), l*ones(200), 'k-')
@@ -74,6 +73,7 @@ for iter = 1:length(quarternotes)
 end
 %% Plot MHALL on same staff for comparison
 figure(3)
+title('Sheet Music for Mary Had a Little Lamb (Spectogram)')
 hold on
 quartert = linspace(1.5, max(T)+.5, 32);
 notes = [3,2,1,2,3,3,3,3,2,2,2,2,3,3,3,3,3,2,1,2,3,3,3,1,2,2,3,2,1,1,1,1];

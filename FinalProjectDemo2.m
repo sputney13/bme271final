@@ -34,10 +34,9 @@ chromscale = [fsharp, g, gsharp, a, asharp, b, c, csharp, d, dsharp, e, f];
 
 % Creates 12 note "sheet music"
 figure(14); clf
-title("'Sheet Music' for Background Music")
 for l = 1:12
     figure(14)
-    plot(linspace(0,6,100), l*ones(100), 'k-')
+    plot(linspace(0,7,100), l*ones(100), 'k-')
     hold on
 end
 
@@ -56,13 +55,22 @@ for n = 1:12
             floor((1/32)*length(tcorrelate)));
     end
     
-    % if, the correlation is higher than a threshold, plot
+    % if the correlation is higher than a threshold plot
     for iter = 1:length(eighthnotes)
         time = find(tcorrelate == eighthnotes(iter));
-        if correlate(time) > .4*max(correlate)
+        if correlate(time) > .35*max(correlate)
             figure(14)
             plot(eighthnotes(iter), n, 'r*')
             hold on
         end
     end
 end
+%% Plot actual music on top of correlation
+figure(14)
+title("Sheet Music for Background of Don't Let Me Down (Correlation)")
+hold on
+eighthtime = linspace(0, max(tcorrelate), 32);
+notes = [3,3,3,3,3,1,1,1,10,10,10,10,10,10,10,10,5,5,5,5,5,5,5,...
+    5,5,6,6,6,6,6,5,5];
+plot(eighthtime, notes, 'b--')
+print -dpdf DLMDCorrelate
